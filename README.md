@@ -1,6 +1,5 @@
 # BibliotecaRestClient
-
-Trabalho de Programação para Web II. Sistema de biblioteca feito com dois micro serviços em Quarkus, que se comunicam por REST Client.
+Sistema de biblioteca feito com dois micro serviços em Quarkus, que se comunicam por REST Client.
 
 ## Micro serviços
 
