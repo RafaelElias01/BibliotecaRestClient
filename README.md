@@ -6,20 +6,6 @@ Sistema de biblioteca feito com dois micro serviços em Quarkus, que se comunica
 
 Os dados ficam em memória e se perdem quando o serviço é parado.
 
-## Como rodar
-
-Precisa do Java 21 e do Maven. Em dois terminais, começando pelo catalog:
-
-```
-cd catalog
-mvn quarkus:dev
-```
-
-```
-cd loans
-mvn quarkus:dev
-```
-
 ## Endpoints
 
 catalog:
