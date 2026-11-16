@@ -4,8 +4,6 @@ Sistema de biblioteca feito com dois micro serviços em Quarkus, que se comunica
 - **catalog** (porta 9080): cuida dos livros.
 - **loans** (porta 9081): cuida dos usuários, do login com JWT e dos empréstimos. Para emprestar e devolver, chama o catalog.
 
-Os dados ficam em memória e se perdem quando o serviço é parado.
-
 ## Endpoints
 
 catalog:
