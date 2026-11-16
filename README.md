@@ -20,8 +20,23 @@ cd loans
 mvn quarkus:dev
 ```
 
-## Funcionalidades
+## Endpoints
 
-No catalog: cadastrar, listar, buscar livros por título, emprestar e devolver.
+catalog:
 
-No loans: cadastrar usuário, fazer login, criar e devolver empréstimo e listar empréstimos de uma pessoa. As operações de empréstimo exigem o token do login, enviado no cabeçalho `Authorization: Bearer <token>`.
+- POST /books: cadastra um livro
+- GET /books: lista os livros (pode filtrar com `?title=`)
+- GET /books/{id}: busca um livro
+- PUT /books/{id}/loan: marca como emprestado
+- PUT /books/{id}/return: marca como devolvido
+
+loans:
+
+- POST /users: cadastra um usuário
+- POST /auth/login: faz login e devolve o token
+- GET /loans/books: lista os livros do catalog
+- GET /loans: lista os empréstimos (pode filtrar com `?borrower=`)
+- POST /loans: cria um empréstimo
+- PUT /loans/{id}/return: devolve um empréstimo
+
+Os endpoints de `/loans` exigem o token do login, enviado no cabeçalho `Authorization: Bearer <token>`.
