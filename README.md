@@ -1,12 +1,10 @@
 # BibliotecaRestClient
 Sistema de biblioteca feito com dois micro serviços em Quarkus, que se comunicam por REST Client.
 
-## Micro serviços
+- **catalog** (porta 9080): cuida dos livros.
+- **loans** (porta 9081): cuida dos usuários, do login com JWT e dos empréstimos. Para emprestar e devolver, chama o catalog.
 
-- **catalog** (porta 9080): cuida do acervo de livros.
-- **loans** (porta 9081): cuida dos usuários, do login (JWT) e dos empréstimos. Para emprestar ou devolver, chama o catalog.
-
-Os dados ficam em memória e são perdidos quando o serviço é parado.
+Os dados ficam em memória e se perdem quando o serviço é parado.
 
 ## Como rodar
 
@@ -22,27 +20,8 @@ cd loans
 mvn quarkus:dev
 ```
 
-## Endpoints
+## Funcionalidades
 
-### catalog
+No catalog: cadastrar, listar, buscar livros por título, emprestar e devolver.
 
-| Método | Caminho | Descrição |
-|--------|---------|-----------|
-| POST | /books | Cadastra um livro |
-| GET | /books | Lista os livros (filtro opcional: `?title=`) |
-| GET | /books/{id} | Busca um livro |
-| PUT | /books/{id}/loan | Marca o livro como emprestado |
-| PUT | /books/{id}/return | Marca o livro como devolvido |
-
-### loans
-
-| Método | Caminho | Descrição |
-|--------|---------|-----------|
-| POST | /users | Cadastra um usuário |
-| POST | /auth/login | Login, devolve o token JWT |
-| GET | /loans/books | Lista os livros do catalog (precisa de token) |
-| GET | /loans | Lista os empréstimos (filtro opcional: `?borrower=`) (precisa de token) |
-| POST | /loans | Cria um empréstimo (precisa de token) |
-| PUT | /loans/{id}/return | Devolve um empréstimo (precisa de token) |
-
-O token do login deve ser enviado no cabeçalho `Authorization: Bearer <token>`.
+No loans: cadastrar usuário, fazer login, criar e devolver empréstimo e listar empréstimos de uma pessoa. As operações de empréstimo exigem o token do login, enviado no cabeçalho `Authorization: Bearer <token>`.
